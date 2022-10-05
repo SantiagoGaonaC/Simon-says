@@ -18,5 +18,3 @@ app.use("/static", express.static(__dirname + "/public/css"));
 //Directorio de uso PARA SCRIPTS DE JS
 app.use(express.static(__dirname + "/public/js"));
 app.use(express.static(__dirname + "/public"));
-
-//

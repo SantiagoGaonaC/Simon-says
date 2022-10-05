@@ -1,103 +1,103 @@
 body {
-    background-color: black;
-    color: white;
+  background-color: black;
+  color: white;
 }
 
 .flex-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    
-    min-width: 300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  min-width: 300px;
 }
 
 .flex-container .sbtn {
-    width: 20%;
-    min-width: 120px;
-    max-width: 200px;
-    height: 120px;        
-    margin: 5px;
-    text-align: center;
-    line-height: 120px;
-    font-size: 30px; 
-    font-weight: bold;
-    color: black;   
+  width: 20%;
+  min-width: 120px;
+  max-width: 200px;
+  height: 120px;
+  margin: 5px;
+  text-align: center;
+  line-height: 120px;
+  font-size: 30px;
+  font-weight: bold;
+  color: black;
 }
 
 .text-center {
-    text-align: center;
+  text-align: center;
 }
 
 .green {
-    background-color: rgb(40, 198, 40);
-    border-radius: 60px 10px 10px 10px; 
+  background-color: rgb(40, 198, 40);
+  border-radius: 60px 10px 10px 10px;
 }
 
 .red {
-    background-color: rgb(188, 31, 31);
-    border-radius: 10px 60px 10px 10px; 
+  background-color: rgb(188, 31, 31);
+  border-radius: 10px 60px 10px 10px;
 }
 
 .yellow {
-    background-color: rgb(190, 190, 33);
-    border-radius: 10px 10px 10px 60px; 
+  background-color: rgb(190, 190, 33);
+  border-radius: 10px 10px 10px 60px;
 }
 
 .blue {
-    background-color: rgb(37, 37, 214);
-    border-radius: 10px 10px 60px 10px; 
+  background-color: rgb(37, 37, 214);
+  border-radius: 10px 10px 60px 10px;
 }
 
 .sbtn:active,
 .activar {
-    filter: brightness(200%);
+  filter: brightness(200%);
 }
 
-.btn {    
-    width: 100px;
-    margin-top: 20px;        
-    padding: 18px;    
-    border-radius: 10px;
-    font-size: 25px;
-    color: black;
-    text-decoration: none;
-    border: 1px solid rgb(155, 155, 155);
-    background-color: rgb(127, 218, 127);
-    cursor: pointer;
+.btn {
+  width: 100px;
+  margin-top: 20px;
+  padding: 18px;
+  border-radius: 10px;
+  font-size: 25px;
+  color: black;
+  text-decoration: none;
+  border: 1px solid rgb(155, 155, 155);
+  background-color: rgb(127, 218, 127);
+  cursor: pointer;
 }
 
 .btn:hover {
-    background-color: aquamarine;
+  background-color: aquamarine;
 }
 
 #iniciarbtn:disabled {
-    background-color: #eee;
-    opacity: 0;
-    cursor: default;
+  background-color: #eee;
+  opacity: 0;
+  cursor: default;
 }
 
-.ronda{
-    font-size: 25px;
-    padding: 10px;
+.ronda {
+  font-size: 25px;
+  padding: 10px;
 }
 
-.ganador{
-    animation: spin 1s ease-in-out;
+.ganador {
+  animation: spin 1s ease-in-out;
 }
 
-@keyframes spin{
-    100%{transform: rotate(180deg);}
+@keyframes spin {
+  100% {
+    transform: rotate(180deg);
+  }
 }
 
-.perdedor{
-    animation: spin 1s ease-in-out;
-    background-color: red;
+.perdedor {
+  animation: spin 1s ease-in-out;
 }
 
-#inputOculto{
-    opacity: 0;
+#inputOculto {
+  opacity: 0;
 }
-.show-input{
-    opacity: 1;
+.show-input {
+  opacity: 1;
 }
-

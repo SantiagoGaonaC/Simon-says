@@ -11,12 +11,14 @@ Poner niveles de dificultad
 var Simon = /** @class */ (function () {
   function Simon(botonsn, iniciarbtn, ronda, inputOculto) {
     //var resp = window.prompt("Your question");
-    this.resp = window.prompt("Nombre de usuario:");
+    //this.resp = window.prompt("Nombre de usuario:");
+    this.dict = {};
     this.secuencia = [];
     this.botonesBloqueados = true;
     this.velocidad = 800;
     this.posicionUsuario = 0;
     this.ronda = 0;
+    this.rondaINT = 0;
     this.RondasWin = 3;
     this.botones = Array.from(botonsn);
     this.show = {
@@ -90,14 +92,22 @@ var Simon = /** @class */ (function () {
         this.perdioRonda();
       } else {
         this.posicionUsuario++;
+        console.log(this.posicionUsuario);
+        console.log("Para la perdida: " + this.posicionUsuario);
       }
     } else {
+      var nombre = prompt("Perdiste :( | Nombre usuario:");
+      this.dict[nombre] = this.posicionUsuario;
+      console.log(this.dict);
+      this.rondaINT = 0;
       this.rondaPerdida();
     }
   };
 
   // Verifica que no haya acabado el juego
   Simon.prototype.perdioRonda = function () {
+    this.rondaINT++;
+    console.log("Voy en la ronda:" + this.rondaINT);
     if (this.ronda === this.RondasWin) {
       this.ganadorRondaJuego();
     } else {
@@ -137,11 +147,7 @@ var Simon = /** @class */ (function () {
     this.botones.forEach(function (element) {
       element.classList.add("perdedor");
     });
-
     this.mostrarRondaPerdida("PERDISTE");
-    setTimeout(function () {
-      window.location.href = window.location;
-    }, 1500);
   };
 
   // Muestra la animacón de triunfo y actualiza el simon cuando el jugador gana
@@ -153,7 +159,10 @@ var Simon = /** @class */ (function () {
     });
 
     //inputOculto.style.opacity = "1";
-    console.log("Paso a ganar");
+    var nombre = prompt("¡Ganaste! Nombre usuario:");
+    this.dict[nombre] = this.rondaINT;
+    console.log(this.dict);
+    this.rondaINT = 0;
     this.mostrarRonda("GG");
   };
 

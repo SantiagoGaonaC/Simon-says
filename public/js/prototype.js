@@ -1,15 +1,15 @@
 var ronda = document.getElementById("ronda");
 var botonsn = document.getElementsByClassName("sbtn");
 var iniciarbtn = document.getElementById("iniciarbtn");
-console.log("Main");
 /*
 Añadir un perdiste mejor
 SCORE en local
 Poner niveles de dificultad
 */
-var dictPrubea = {};
-class Simon {
-  constructor(botonsn, iniciarbtn, ronda) {
+
+var Simon = /** @class */ (function () {
+  function Simon(botonsn, iniciarbtn, ronda) {
+    this.dictPrubea = {};
     this.secuencia = [];
     this.botonesBloqueados = true;
     this.velocidad = 800;
@@ -24,18 +24,17 @@ class Simon {
     };
   }
 
-  //HAGO METODO PARA QUE LUEGO DE GUARDAR UN NOMBRE SE HAGA ESE METODO QUE IMPRIMA UNA TABLA
   // Inicia el Simon
-  init() {
+  Simon.prototype.init = function () {
     var _this = this;
     this.show.iniciarbtn.onclick = function () {
       return _this.comenzarJuego();
     };
     //inputOculto.style.opacity = "0";
-  }
+  };
 
   // comienza la partida del juego
-  comenzarJuego() {
+  Simon.prototype.comenzarJuego = function () {
     var _this = this;
     this.show.iniciarbtn.disabled = true;
     this.mostrarRonda(0);
@@ -47,53 +46,41 @@ class Simon {
         return _this.clickBoton(i);
       };
     });
-    this.mostrarTabla();
     this.mostrarSecuencia();
-  }
-
-  mostrarTabla() {
-    document.getElementById("ranking").innerHTML = "";
-    console.log("dict original " + dictPrubea);
-    for (const i in dictPrubea) {
-      document.getElementById("ranking").innerHTML +=
-        [i] + " " + dictPrubea[i] + "<br>";
-      //document.getElementById("ranking").remove();
-      //console.log(`${i}: ${dictPrubea[i]}`);
-    }
-  }
+  };
 
   // actualiza la ronda la cual se muestra
-  mostrarRonda(value) {
+  Simon.prototype.mostrarRonda = function (value) {
     this.ronda = value;
     this.show.ronda.textContent = "".concat(this.ronda);
     //console.log(this.ronda); //ACA SALE LA RONDA QUE TIENE EL USUARIO
-  }
+  };
 
-  mostrarRondaPerdida(value) {
+  Simon.prototype.mostrarRondaPerdida = function (value) {
     this.ronda = value;
     this.show.ronda.textContent = "".concat(this.ronda);
-  }
+  };
 
   // crea la lista aleatorea de botones
-  crearSecuencia() {
+  Simon.prototype.crearSecuencia = function () {
     var _this = this;
     return Array.from({ length: this.RondasWin }, function () {
       return _this.generarColorRandom();
     });
-  }
+  };
 
   // return numero 0 y 3
-  generarColorRandom() {
+  Simon.prototype.generarColorRandom = function () {
     return Math.floor(Math.random() * 4);
-  }
+  };
 
   // Ejecuta una función cuando se hace click en un botón
-  clickBoton(value) {
+  Simon.prototype.clickBoton = function (value) {
     !this.botonesBloqueados && this.validarValorSecuencia(value);
-  }
+  };
 
   // Valida si el boton que toca el usuario corresponde a al valor de la secuencia
-  validarValorSecuencia(value) {
+  Simon.prototype.validarValorSecuencia = function (value) {
     if (this.secuencia[this.posicionUsuario] === value) {
       if (this.ronda === this.posicionUsuario) {
         this.mostrarRonda(this.ronda + 1);
@@ -110,10 +97,10 @@ class Simon {
       this.rondaINT = 0;
       this.rondaPerdida();
     }
-  }
+  };
 
   // Verifica que no haya acabado el juego
-  perdioRonda() {
+  Simon.prototype.perdioRonda = function () {
     this.rondaINT++;
     console.log("Voy en la ronda:" + this.rondaINT);
     if (this.ronda === this.RondasWin) {
@@ -122,10 +109,10 @@ class Simon {
       this.posicionUsuario = 0;
       this.mostrarSecuencia();
     }
-  }
+  };
 
   // Muestra la secuencia de botones que va a tener que tocar el usuario
-  mostrarSecuencia() {
+  Simon.prototype.mostrarSecuencia = function () {
     var _this = this;
     this.botonesBloqueados = true; //No pueda hacer click en nada
     var momentoSecuencia = 0; //guardar en qué momento de la secuencia estamos
@@ -141,25 +128,25 @@ class Simon {
         clearInterval(tiempo); //metodo para limpiar | cancela tiempo
       }
     }, this.velocidad);
-  }
+  };
 
   // Pinta los botones para cuando se está mostrando la secuencia
-  activarStiloBoton(button) {
+  Simon.prototype.activarStiloBoton = function (button) {
     button.classList.toggle("activar");
-  }
+  };
 
   // Actualiza el simon cuando el jugador pierde
-  rondaPerdida() {
+  Simon.prototype.rondaPerdida = function () {
     this.show.iniciarbtn.disabled = false;
     this.botonesBloqueados = true;
     this.botones.forEach(function (element) {
       element.classList.add("perdedor");
     });
     this.mostrarRondaPerdida("PERDISTE");
-  }
+  };
 
   // Muestra la animacón de triunfo y actualiza el simon cuando el jugador gana
-  ganadorRondaJuego() {
+  Simon.prototype.ganadorRondaJuego = function () {
     this.show.iniciarbtn.disabled = false;
     this.botonesBloqueados = true;
     this.botones.forEach(function (element) {
@@ -171,15 +158,18 @@ class Simon {
     this.exportDict(nombre, this.rondaINT);
     this.rondaINT = 0;
     this.mostrarRonda("GG");
-  }
+  };
 
-  exportDict(nombre, rondaINT) {
+  Simon.prototype.exportDict = function (nombre, rondaINT) {
     var nombre = nombre;
     var rondaINT = rondaINT;
-    dictPrubea[nombre] = rondaINT;
-    return console.log(JSON.stringify(dictPrubea));
-  }
-}
+    this.dictPrubea[nombre] = rondaINT;
+    return console.log(JSON.stringify(this.dictPrubea));
+  };
+
+  return Simon;
+})();
 
 var simon = new Simon(botonsn, iniciarbtn, ronda);
+
 simon.init();

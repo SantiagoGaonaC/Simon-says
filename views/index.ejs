@@ -7,54 +7,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../public/css/style.css">
     <title>Simon Says</title>
-    <script src="../public/js/main.js" type="text/javascript" defer></script>
-    <script src="main.js" type="text/javascript" defer></script>
-    <script src="../registrarRonda.js" type="text/javascript" defer></script>
-    <script src="../mostrarTabla.js" type="text/javascript" defer></script>
+    <script src="main.js" type="module" defer></script>
 
 </head>
 
 <body>
     <div class="container">
-        <h1 class="text-center">Simon Says</h1>
-        <div class="flex-container">
-            <div class="sbtn green">G</div>
-            <div class="sbtn red">R</div>
-        </div>
-        <div class="flex-container">
-            <div class="sbtn yellow">Y</div>
-            <div class="sbtn blue">B</div>
-        </div>
-        <div class="flex-container">
-            <div class="text-center">
-                <button id="iniciarbtn" class="btn">Iniciar</button>
-                <div id="ronda" class="ronda"></div>
-                <div id="perdia" class="ronda"></div>
-                <div id="input" class=""></div>
-                <form id="inputOculto" class="show-input">
-                    Nombre de usuario para guardar partida:<br>
-                    <input type="text" name="username" id="username" placeholder="
-                    Nombre de usuario para guardar partida">
-                    <button type="button" id="btnRegistrar">Enviar</button>
-                </form>
+        <div class="contenido">
+            <h1 class="text-center">Simon Says</h1>
+            <div class="flex-container">
+                <div class="sbtn green">G</div>
+                <div class="sbtn red">R</div>
             </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div id="tabla-clasificacion">
-                            <table id="table" class="table">
-                                <thead>
-                                    <th>Nombre</th>
-                                    <th>Rondas</th>
-                                </thead>
-                                <tbody id="nombres-tabla">
-
-                                </tbody>
-
-                            </table>
-                        </div>
-                        <button id="mostrar-tabla">Mostrar Tabla</button>
-                    </div>
+            <div class="flex-container">
+                <div class="sbtn yellow">Y</div>
+                <div class="sbtn blue">B</div>
+            </div>
+            <div class="flex-container">
+                <div class="text-center">
+                    <button id="iniciarbtn" class="btn"> Iniciar</button>
+                    <div id="ronda" class="ronda"></div>
+                    <div id="ranking">ranking</div>
                 </div>
             </div>
         </div>

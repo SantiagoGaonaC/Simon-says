@@ -56,7 +56,7 @@ class Simon {
     console.log("dict original " + dictPrubea);
     for (const i in dictPrubea) {
       document.getElementById("ranking").innerHTML +=
-        [i] + " " + dictPrubea[i] + "<br>";
+        [i] + " | " + dictPrubea[i] + "<br>";
       //document.getElementById("ranking").remove();
       //console.log(`${i}: ${dictPrubea[i]}`);
     }
@@ -65,7 +65,7 @@ class Simon {
   // actualiza la ronda la cual se muestra
   mostrarRonda(value) {
     this.ronda = value;
-    this.show.ronda.textContent = "".concat(this.ronda);
+    this.show.ronda.textContent = "Ronda: ".concat(this.ronda);
     //console.log(this.ronda); //ACA SALE LA RONDA QUE TIENE EL USUARIO
   }
 

@@ -1,6 +1,7 @@
 body {
   background-color: black;
   color: white;
+  font-family: "Lucida Console", "Courier New", monospace;
 }
 
 .flex-container {
@@ -54,7 +55,7 @@ body {
 }
 
 .btn {
-  margin: 4px 2px;
+  margin: 40px 2px;
   padding: 15px 32px;
   font-size: 25px;
   color: white;
@@ -99,4 +100,32 @@ body {
 }
 .show-input {
   opacity: 1;
+}
+
+.rainbow {
+  font-size: 30px;
+  animation: rainbow 2.5s linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes rainbow {
+  100%,
+  25% {
+    color: rgb(40, 198, 40);
+  }
+  25% {
+    color: rgb(188, 31, 31);
+  }
+  25% {
+    color: rgb(190, 190, 33);
+  }
+  25% {
+    color: rgb(37, 37, 214);
+  }
+}
+
+.ronda {
+  font-size: 35px;
+  margin: 40px;
+  font-weight: bold;
 }

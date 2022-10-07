@@ -1,26 +1,27 @@
 var ronda = document.getElementById("ronda");
 var botonsn = document.getElementsByClassName("sbtn");
 var iniciarbtn = document.getElementById("iniciarbtn");
-console.log("Main");
-/*
-Añadir un perdiste mejor
-SCORE en local
-Poner niveles de dificultad
-*/
+var easyMode = document.getElementById("easy");
+var mediumMode = document.getElementById("medium");
+var hardMode = document.getElementById("hard");
 var dictPrubea = {};
+
 class Simon {
-  constructor(botonsn, iniciarbtn, ronda) {
+  constructor(botonsn, iniciarbtn, ronda, easyMode, mediumMode, hardMode) {
     this.secuencia = [];
     this.botonesBloqueados = true;
-    this.velocidad = 800;
+    this.velocidad = 1000;
+    this.RondasWin = 5;
     this.posicionUsuario = 0;
     this.ronda = 0;
     this.rondaINT = 0;
-    this.RondasWin = 3;
     this.botones = Array.from(botonsn);
     this.show = {
       iniciarbtn: iniciarbtn,
-      ronda: ronda
+      ronda: ronda,
+      easyMode: easyMode,
+      mediumMode: mediumMode,
+      hardMode: hardMode
     };
   }
 
@@ -28,6 +29,22 @@ class Simon {
   // Inicia el Simon
   init() {
     var _this = this;
+
+    this.show.easyMode.onclick = function () {
+      _this.velocidad = 1000;
+      _this.RondasWin = 5;
+    };
+
+    this.show.mediumMode.onclick = function () {
+      _this.velocidad = 700;
+      _this.RondasWin = 10;
+    };
+
+    this.show.hardMode.onclick = function () {
+      _this.velocidad = 400;
+      _this.RondasWin = 50;
+    };
+
     this.show.iniciarbtn.onclick = function () {
       return _this.comenzarJuego();
     };
@@ -181,5 +198,12 @@ class Simon {
   }
 }
 
-var simon = new Simon(botonsn, iniciarbtn, ronda);
+var simon = new Simon(
+  botonsn,
+  iniciarbtn,
+  ronda,
+  easyMode,
+  mediumMode,
+  hardMode
+);
 simon.init();

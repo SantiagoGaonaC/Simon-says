@@ -61,9 +61,17 @@ body {
   color: white;
   text-align: center;
   border: none;
-  background-color: #4caf50;
   cursor: pointer;
   display: inline-block;
+}
+.verde {
+  background-color: #4caf50;
+}
+.azul {
+  background-color: rgb(37, 37, 214);
+}
+.rojo {
+  background-color: rgb(188, 31, 31);
 }
 
 .btn:hover {
